@@ -9,8 +9,6 @@ import webmanifest from "astro-webmanifest";
 import { defineConfig, envField } from "astro/config";
 import { expressiveCodeOptions } from "./src/site.config";
 import { siteConfig } from "./src/site.config";
-import vercel from "@astrojs/vercel";
-
 // Remark plugins
 import remarkDirective from "remark-directive"; // Handle ::: directives as nodes
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; // Add admonitions
@@ -24,15 +22,10 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeKatex from "rehype-katex"; // Render LaTeX with KaTeX
 
 
-import decapCmsOauth from "astro-decap-cms-oauth";
-
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: vercel(),
-    image: {
-        domains: ["webmention.io"],
-    },
+  output: 'static',
+    image: {},
     integrations: [expressiveCode(expressiveCodeOptions), icon({
   iconDir: "public/icons", // 修改：指定自定义图标目录 name = svg文件名
 }), tailwind({
@@ -77,7 +70,7 @@ export default defineConfig({
             insertThemeColorMeta: false,
             insertManifestLink: false,
         },
-		}), decapCmsOauth()],
+})],
     markdown: {
         rehypePlugins: [
             [
@@ -112,17 +105,10 @@ export default defineConfig({
     // ! 改为你的网站地址，不然社交图片无法加载
     site: "https://demo.343700.xyz/",
     vite: {
-        optimizeDeps: {
-            exclude: ["@resvg/resvg-js"],
-        },
         plugins: [rawFonts([".ttf", ".woff"])],
     },
     env: {
-        schema: {
-            WEBMENTION_API_KEY: envField.string({ context: "server", access: "secret", optional: true }),
-            WEBMENTION_URL: envField.string({ context: "client", access: "public", optional: true }),
-            WEBMENTION_PINGBACK: envField.string({ context: "client", access: "public", optional: true }),
-        },
+        schema: {}
     },
 });
 
