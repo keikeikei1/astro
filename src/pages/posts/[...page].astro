@@ -55,13 +55,14 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 ---
 
 <PageLayout meta={meta}>
-	<h1 class="title mb-6 flex items-center gap-3">
+	<h1 class="title mb-6 flex items-center gap-3 text-3xl">
 		博客
-		<a class="text-accent" href="/rss.xml" target="_blank">
+		<a class="text-accent hover:text-accent-2 transition-colors" href="/rss.xml" target="_blank">
 			<span class="sr-only">RSS feed</span>
 			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
 		</a>
 	</h1>
+	<p class="mb-8 text-lg text-gray-600 dark:text-gray-300">探索我的文章和想法，希望能给您带来启发。</p>
 	<div class="grid gap-y-16 sm:grid-cols-[3fr_1fr] sm:gap-x-8">
 		<section aria-label="Blog post list">
 			{

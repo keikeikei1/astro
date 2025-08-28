@@ -45,12 +45,13 @@ const paginationProps = {
 
 <PageLayout meta={meta}>
 	<section>
-		<h1 class="title mb-6 flex items-center gap-3">
-			笔记 <a class="text-accent" href="/notes/rss.xml" target="_blank">
+		<h1 class="title mb-6 flex items-center gap-3 text-3xl">
+			笔记 <a class="text-accent hover:text-accent-2 transition-colors" href="/notes/rss.xml" target="_blank">
 				<span class="sr-only">RSS feed</span>
 				<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
 			</a>
 		</h1>
+		<p class="mb-8 text-lg text-gray-600 dark:text-gray-300">记录日常思考和灵感，简短而有价值的片段。</p>
 		<ul class="mt-6 space-y-8 text-start">
 			{
 				page.data.map((note) => (
