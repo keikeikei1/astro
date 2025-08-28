@@ -25,6 +25,9 @@ import rehypeKatex from "rehype-katex"; // Render LaTeX with KaTeX
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+    server: {
+      host: '192.168.3.253', // 指定本地调试的 IP 地址
+    },
     image: {},
     integrations: [expressiveCode(expressiveCodeOptions), icon({
   iconDir: "public/icons", // 修改：指定自定义图标目录 name = svg文件名
