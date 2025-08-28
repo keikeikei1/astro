@@ -22,31 +22,48 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 ---
 
 <!-- 修改：主页 -->
-<PageLayout meta={{ title: "主页" }}>
-<section class="mb-12">
-	<h1 class="title mb-4 text-4xl font-bold">李kk的个人空间</h1>
-	<p class="mb-6 text-xl leading-relaxed">分享我的思考、创作和发现。这里记录着我的技术探索、生活感悟和有趣的发现。</p>
-	<div class="flex flex-wrap gap-4 mb-8">
-		<a href="/posts" class="px-6 py-2 bg-accent text-white rounded-lg hover:bg-accent-2 transition-colors">浏览文章</a>
-		<a href="/notes" class="px-6 py-2 border border-accent text-accent rounded-lg hover:bg-accent hover:text-white transition-colors">查看笔记</a>
-	</div>
-</section>
-
-<section class="mb-16 bg-card p-6 rounded-lg shadow-sm">
-	<h2 class="title mb-4 text-2xl font-semibold">关于我</h2>
-	<div class="flex flex-col md:flex-row gap-6">
-		<div class="md:w-2/3">
-			<p class="mb-4">嗨，我是李kk，一名热爱技术和创作的开发者。我喜欢探索新技术，分享学习心得，记录生活点滴。</p>
-			<p class="mb-4">这个博客使用 Astro 构建，是我记录思考和分享知识的地方。我会定期更新技术文章、学习笔记和个人感悟。</p>
-			<p>如果你对我的文章有任何问题或建议，欢迎与我交流！</p>
+<PageLayout meta={{ title: "李kk的博客" }}>
+	<section class="mb-12">
+		<h1 class="title mb-4 text-4xl font-bold">李kk的个人空间</h1>
+		<p class="mb-6 text-xl leading-relaxed">
+			分享我的思考、创作和发现。这里记录着我的技术探索、生活感悟和有趣的发现。
+		</p>
+		<div class="mb-8 flex flex-wrap gap-4">
+			<a
+				href="/posts"
+				class="rounded-lg bg-accent px-6 py-2 text-white transition-colors hover:bg-accent-2"
+				>浏览文章</a
+			>
+			<a
+				href="/notes"
+				class="rounded-lg border border-accent px-6 py-2 text-accent transition-colors hover:bg-accent hover:text-white"
+				>查看笔记</a
+			>
 		</div>
-		<div class="md:w-1/3 flex justify-center items-center">
-			<div class="w-40 h-40 rounded-full bg-accent-2 flex items-center justify-center text-white text-4xl font-bold">
-				李kk
+	</section>
+
+	<section class="bg-card mb-16 rounded-lg p-6 shadow-sm">
+		<h2 class="title mb-4 text-2xl font-semibold">关于我</h2>
+		<div class="flex flex-col gap-6 md:flex-row">
+			<div class="md:w-2/3">
+				<p class="mb-4">
+					嗨，我是李kk，一名热爱技术和创作的开发者。我喜欢探索新技术，分享学习心得，记录生活点滴。
+				</p>
+				<p class="mb-4">
+					这个博客使用 Astro
+					构建，是我记录思考和分享知识的地方。我会定期更新技术文章、学习笔记和个人感悟。
+				</p>
+				<p>如果你对我的文章有任何问题或建议，欢迎与我交流！</p>
+			</div>
+			<div class="flex items-center justify-center md:w-1/3">
+				<div
+					class="flex h-40 w-40 items-center justify-center rounded-full bg-accent-2 text-4xl font-bold text-white"
+				>
+					李kk
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 	<!-- 修改：注释 -->
 	<!-- <section>
 		<h1 class="title mb-6">Hello World!</h1>
@@ -57,36 +74,44 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 		</p>
 		<SocialList />
 	</section> -->
-<section aria-label="Blog post list" class="mb-16">
-	<div class="flex justify-between items-center mb-8">
-		<h2 class="title text-2xl font-semibold text-accent">精选文章</h2>
-		<a class="px-4 py-1 text-sm border border-accent text-accent rounded-full hover:bg-accent hover:text-white transition-colors" href="/posts/">查看全部</a>
-	</div>
-	<ul class="space-y-6" role="list">
-		{
-			allPostsByDate.map((p) => (
-				<li class="grid gap-4 sm:grid-cols-[auto_1fr] bg-card p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-					<PostPreview post={p} />
-				</li>
-			))
-		}
-	</ul>
-</section>
-{
-	latestNotes.length > 0 && (
-		<section class="mt-16">
-			<div class="flex justify-between items-center mb-8">
-				<h2 class="title text-2xl font-semibold text-accent">随想笔记</h2>
-				<a class="px-4 py-1 text-sm border border-accent text-accent rounded-full hover:bg-accent hover:text-white transition-colors" href="/notes/">查看全部</a>
-			</div>
-			<ul class="grid grid-cols-1 md:grid-cols-2 gap-6" role="list">
-				{latestNotes.map((note) => (
-					<li class="bg-card p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-						<Note note={note} as="h3" isPreview />
+	<section aria-label="Blog post list" class="mb-16">
+		<div class="mb-8 flex items-center justify-between">
+			<h2 class="title text-2xl font-semibold text-accent">精选文章</h2>
+			<a
+				class="rounded-full border border-accent px-4 py-1 text-sm text-accent transition-colors hover:bg-accent hover:text-white"
+				href="/posts/">查看全部</a
+			>
+		</div>
+		<ul class="space-y-6" role="list">
+			{
+				allPostsByDate.map((p) => (
+					<li class="bg-card grid gap-4 rounded-lg p-4 shadow-sm transition-shadow hover:shadow-md sm:grid-cols-[auto_1fr]">
+						<PostPreview post={p} />
 					</li>
-				))}
-			</ul>
-		</section>
-	)
-}
+				))
+			}
+		</ul>
+	</section>
+	{
+		latestNotes.length > 0 && (
+			<section class="mt-16">
+				<div class="mb-8 flex items-center justify-between">
+					<h2 class="title text-2xl font-semibold text-accent">随想笔记</h2>
+					<a
+						class="rounded-full border border-accent px-4 py-1 text-sm text-accent transition-colors hover:bg-accent hover:text-white"
+						href="/notes/"
+					>
+						查看全部
+					</a>
+				</div>
+				<ul class="grid grid-cols-1 gap-6 md:grid-cols-2" role="list">
+					{latestNotes.map((note) => (
+						<li class="bg-card rounded-lg p-4 shadow-sm transition-shadow hover:shadow-md">
+							<Note note={note} as="h3" isPreview />
+						</li>
+					))}
+				</ul>
+			</section>
+		)
+	}
 </PageLayout>
