@@ -6,7 +6,8 @@ import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import robotsTxt from "astro-robots-txt";
 import webmanifest from "astro-webmanifest";
-import { defineConfig, envField } from "astro/config";
+import decapCmsOauth from "astro-decap-cms-oauth";
+import { defineConfig } from "astro/config";
 import { expressiveCodeOptions } from "./src/site.config";
 import { siteConfig } from "./src/site.config";
 // Remark plugins
@@ -34,7 +35,7 @@ export default defineConfig({
 }), tailwind({
         applyBaseStyles: false,
         nesting: true,
-		}), sitemap(), mdx(), robotsTxt(), webmanifest({
+		}), sitemap(), mdx(), robotsTxt(), decapCmsOauth(), webmanifest({
         // See: https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md
         /**
          * required
@@ -109,9 +110,6 @@ export default defineConfig({
     site: "https://demo.343700.xyz/",
     vite: {
         plugins: [rawFonts([".ttf", ".woff"])],
-    },
-    env: {
-        schema: {}
     },
 });
 

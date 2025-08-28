@@ -1,0 +1,42 @@
+backend:
+  name: github
+  repo: wmbxyt/astro # 请替换为您的GitHub用户名和仓库名
+  branch: main # 分支名称，通常是main或master
+  base_url: https://k.126778.xyz # 您的网站URL
+  auth_endpoint: api/auth # OAuth认证端点
+
+# 发布模式（可选）
+publish_mode: editorial_workflow
+
+# 媒体文件存储位置
+media_folder: "public/uploads" # 上传的媒体文件将存储在此目录
+public_folder: "/uploads" # 媒体文件的公共URL
+
+# 内容集合
+collections:
+  # 博客文章集合
+  - name: "post"
+    label: "博客文章"
+    folder: "src/content/post"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "描述", name: "description", widget: "string" }
+      - { label: "发布日期", name: "publishDate", widget: "datetime", format: "YYYY-MM-DD HH:mm" }
+      - { label: "标签", name: "tags", widget: "list", default: ["博客"] }
+      - { label: "封面图", name: "coverImage", widget: "image", required: false }
+      - { label: "内容", name: "body", widget: "markdown" }
+
+  # 笔记集合
+  - name: "note"
+    label: "笔记"
+    folder: "src/content/note"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "描述", name: "description", widget: "string" }
+      - { label: "发布日期", name: "publishDate", widget: "datetime", format: "YYYY-MM-DD HH:mm" }
+      - { label: "标签", name: "tags", widget: "list", default: ["笔记"] }
+      - { label: "内容", name: "body", widget: "markdown" }
