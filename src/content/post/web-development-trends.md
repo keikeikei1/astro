@@ -1,7 +1,7 @@
 ---
 title: "2025年Web开发趋势"
 description: "探索当前Web开发领域的最新趋势和技术，了解未来发展方向。"
-publishDate: "2025-08-28"
+publishDate: "2025-08-28 11:00"
 tags: ["Web开发", "趋势", "技术"]
 ---
 

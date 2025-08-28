@@ -1,6 +1,6 @@
 ---
 title: "Markdown 快速技巧"
-publishDate: "2025-08-28"
+publishDate: "2025-08-28 10:30"
 ---
 
 Markdown 是一种轻量级标记语言，让您可以使用易读易写的纯文本格式编写文档，然后转换成有效的 HTML 文档。
